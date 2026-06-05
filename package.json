@@ -1,0 +1,35 @@
+{
+  "name": "agent-handoff-kit",
+  "version": "0.1.0",
+  "description": "Generate compact AI coding agent handoff packs for any repository.",
+  "type": "commonjs",
+  "bin": {
+    "agent-handoff-kit": "./bin/agent-handoff-kit.js"
+  },
+  "files": [
+    "bin",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node ./bin/agent-handoff-kit.js --dry-run"
+  },
+  "keywords": [
+    "ai",
+    "agents",
+    "codex",
+    "claude-code",
+    "cursor",
+    "llm",
+    "developer-tools",
+    "handoff",
+    "context-engineering"
+  ],
+  "author": "luoowei",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}
