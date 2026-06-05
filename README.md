@@ -52,12 +52,6 @@ npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app -
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --force
 ```
 
-发布到 npm 后，可以使用更短的命令：
-
-```bash
-npx agent-handoff-kit
-```
-
 ## 输出示例
 
 ```markdown

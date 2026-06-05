@@ -52,12 +52,6 @@ npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app -
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --force
 ```
 
-After npm publication, the shorter command will be:
-
-```bash
-npx agent-handoff-kit
-```
-
 ## Example Output
 
 ```markdown
@@ -73,7 +67,7 @@ npx agent-handoff-kit
 ## Common Commands
 
 - `npm test` - vitest run
-- `npm build` - vite build
+- `npm run build` - vite build
 
 ## Instructions For The Next Agent
 
