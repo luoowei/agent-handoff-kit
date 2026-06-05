@@ -30,8 +30,8 @@ Important files:
 - LICENSE
 - llms.txt
 - package.json
+- README.en.md
 - README.md
-- README.zh-CN.md
 - src/cli.js
 - src/file-writer.js
 - src/generator.js

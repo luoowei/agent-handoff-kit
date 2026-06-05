@@ -1,64 +1,64 @@
 # agent-handoff-kit
 
-**Language:** English | [简体中文](README.zh-CN.md)
+**语言：** [English](README.en.md) | 简体中文
 
-Stop re-explaining your repo to every AI coding agent.
+不要再给每个 AI 编程 Agent 反复解释你的仓库。
 
-`agent-handoff-kit` is a zero-config CLI that generates compact handoff files for Codex, Claude Code, Cursor, and other AI coding agents. It scans your repository locally and writes the context a new agent needs before touching code.
+`agent-handoff-kit` 是一个零配置 CLI，可以为 Codex、Claude Code、Cursor 和其他 AI 编程 Agent 生成紧凑的仓库交接文件。它只在本地扫描你的仓库，并在 Agent 改代码前写出它需要的上下文。
 
-No API key. No upload. No setup ceremony.
+不需要 API key。不上传代码。没有复杂配置。
 
-## Quick Start
+## 快速开始
 
 ```bash
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 ```
 
-That generates:
+它会生成：
 
-- `AGENT_HANDOFF.md` - project snapshot, stack, commands, files, and current Git state
-- `AGENTS.md` - repository-level operating rules for AI coding agents
-- `llms.txt` - short LLM-friendly project entrypoint
-- `handoff-pack.md` - copy-paste context for a fresh agent session
+- `AGENT_HANDOFF.md`：项目快照、技术栈、命令、关键文件和当前 Git 状态
+- `AGENTS.md`：仓库级 AI 编程 Agent 操作规则
+- `llms.txt`：给 LLM 读取的简短项目入口
+- `handoff-pack.md`：可直接粘贴到新 Agent 会话里的上下文包
 
-## Why
+## 为什么需要它
 
-AI coding agents are powerful, but every fresh session starts cold:
+AI 编程 Agent 很强，但每个新会话一开始都是“冷启动”：
 
-- What stack is this?
-- Which commands are safe to run?
-- What files matter?
-- Is the working tree dirty?
-- What should the next agent never overwrite?
+- 这个项目是什么技术栈？
+- 哪些命令可以安全运行？
+- 哪些文件最重要？
+- 工作区现在有没有未提交改动？
+- 下一个 Agent 绝对不能覆盖什么？
 
-This tool turns that repeated explanation into a reusable repository artifact.
+这个工具把这些重复解释变成可复用的仓库文档。
 
-## Usage
+## 用法
 
 ```bash
-# Scan the current directory and write files there
+# 扫描当前目录，并把生成文件写到当前目录
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 
-# Preview without writing
+# 只预览，不写文件
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dry-run
 
-# Scan another repo
+# 扫描另一个仓库
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app
 
-# Write output somewhere else
+# 把生成结果写到其他目录
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app --out ./handoff
 
-# Overwrite existing generated files
+# 覆盖已有生成文件
 npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --force
 ```
 
-After npm publication, the shorter command will be:
+发布到 npm 后，可以使用更短的命令：
 
 ```bash
 npx agent-handoff-kit
 ```
 
-## Example Output
+## 输出示例
 
 ```markdown
 # my-app Agent Handoff
@@ -73,7 +73,7 @@ npx agent-handoff-kit
 ## Common Commands
 
 - `npm test` - vitest run
-- `npm build` - vite build
+- `npm run build` - vite build
 
 ## Instructions For The Next Agent
 
@@ -83,45 +83,45 @@ npx agent-handoff-kit
 - Prefer existing project scripts and conventions.
 ```
 
-## What It Detects
+## 它会检测什么
 
-- project name from `package.json` or folder name
-- package manager from lockfiles
-- scripts from `package.json`
-- stack hints for Node.js, React, Vue, Svelte, Next.js, Vite, Python, Go, Rust, and Docker
-- docs and config files
-- Git branch, dirty state, and changed files
-- important files while skipping heavy generated folders
+- 从 `package.json` 或目录名识别项目名称
+- 从 lockfile 识别包管理器
+- 从 `package.json` 读取 scripts
+- 识别 Node.js、React、Vue、Svelte、Next.js、Vite、Python、Go、Rust、Docker 等技术栈线索
+- 发现文档和配置文件
+- 读取 Git 分支、工作区是否有改动、改动文件列表
+- 收集重要文件，同时跳过大型生成目录
 
-## Generated Files
+## 生成文件说明
 
 ### `AGENT_HANDOFF.md`
 
-The main handoff document. Commit it when you want persistent agent context, or regenerate it during active work.
+主要交接文档。你可以在需要持久保存 Agent 上下文时提交它，也可以在活跃开发中随时重新生成。
 
 ### `AGENTS.md`
 
-Shared operating rules for coding agents. Many tools already look for this file.
+给 AI 编程 Agent 的共享操作规则。很多工具已经会主动查找这个文件。
 
 ### `llms.txt`
 
-A short entrypoint for LLMs and AI tools that want a concise map of your repository.
+给 LLM 和 AI 工具使用的简短仓库地图。
 
 ### `handoff-pack.md`
 
-A single pasteable block for a new chat or a remote teammate's agent session.
+一个可粘贴的上下文块，适合新聊天窗口或远程协作者的 Agent 会话。
 
-## Safety
+## 安全性
 
-`agent-handoff-kit` is local-only. It does not call an LLM, send telemetry, or upload your code. Existing generated files are not overwritten unless you pass `--force`.
+`agent-handoff-kit` 只在本地运行。它不会调用 LLM，不会发送遥测，也不会上传你的代码。默认不会覆盖已有生成文件，除非显式传入 `--force`。
 
-## Development
+## 开发
 
 ```bash
 npm test
 node ./bin/agent-handoff-kit.js --dry-run
 ```
 
-## License
+## 许可证
 
 MIT
