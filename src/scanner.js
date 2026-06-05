@@ -125,18 +125,28 @@ function detectGit(root) {
     const status = execFileSync('git', ['-C', root, 'status', '--short'], {
       encoding: 'utf8',
       stdio: ['ignore', 'pipe', 'ignore']
-    }).trim();
+    }).trimEnd();
 
     return {
       branch: branch || 'detached',
       dirty: status.length > 0,
-      changedFiles: status
-        ? status.split(/\r?\n/).map((line) => line.slice(3).trim()).filter(Boolean)
-        : []
+      changedFiles: parseGitChangedFiles(status)
     };
   } catch {
     return null;
   }
+}
+
+function parseGitChangedFiles(status) {
+  if (!status) {
+    return [];
+  }
+
+  return status
+    .split(/\r?\n/)
+    .map((line) => line.slice(3))
+    .map((file) => file.trim())
+    .filter(Boolean);
 }
 
 function walkFiles(root) {
@@ -185,5 +195,6 @@ function isConfigFile(file) {
 }
 
 module.exports = {
+  parseGitChangedFiles,
   scanRepository
 };

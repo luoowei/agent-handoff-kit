@@ -4,7 +4,7 @@ const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 
-const { scanRepository } = require('../src/scanner');
+const { parseGitChangedFiles, scanRepository } = require('../src/scanner');
 
 function makeTempRepo() {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'ahk-scan-'));
@@ -47,4 +47,10 @@ test('scanRepository detects project identity, package manager, scripts, and sta
   assert.ok(result.docs.includes('README.md'));
   assert.ok(result.files.some((file) => file.path === 'src.jsx'));
   assert.ok(!result.files.some((file) => file.path.includes('node_modules')));
+});
+
+test('parseGitChangedFiles preserves filenames from modified and untracked status lines', () => {
+  const result = parseGitChangedFiles(' M LAUNCH.md\n M README.md\n?? .github/\n');
+
+  assert.deepEqual(result, ['LAUNCH.md', 'README.md', '.github/']);
 });

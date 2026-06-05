@@ -9,7 +9,7 @@ No API key. No upload. No setup ceremony.
 ## Quick Start
 
 ```bash
-npx github:luoowei/agent-handoff-kit
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 ```
 
 That generates:
@@ -35,19 +35,19 @@ This tool turns that repeated explanation into a reusable repository artifact.
 
 ```bash
 # Scan the current directory and write files there
-npx github:luoowei/agent-handoff-kit
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 
 # Preview without writing
-npx github:luoowei/agent-handoff-kit --dry-run
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dry-run
 
 # Scan another repo
-npx github:luoowei/agent-handoff-kit --dir ../my-app
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app
 
 # Write output somewhere else
-npx github:luoowei/agent-handoff-kit --dir ../my-app --out ./handoff
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --dir ../my-app --out ./handoff
 
 # Overwrite existing generated files
-npx github:luoowei/agent-handoff-kit --force
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git --force
 ```
 
 After npm publication, the shorter command will be:

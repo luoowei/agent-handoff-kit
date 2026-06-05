@@ -18,6 +18,7 @@ Useful commands:
 `npm run smoke` - node ./bin/agent-handoff-kit.js --dry-run
 
 Important files:
+- .github/workflows/test.yml
 - .gitignore
 - AGENT_HANDOFF.md
 - AGENTS.md
@@ -37,5 +38,4 @@ Important files:
 - test/cli.test.js
 - test/file-writer.test.js
 - test/generator.test.js
-- test/scanner.test.js
 ```

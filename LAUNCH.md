@@ -25,7 +25,7 @@ The itch: every Codex / Claude Code / Cursor session starts cold. You have to re
 
 No API key, no upload, no telemetry. Just static repo analysis and markdown.
 
-npx github:luoowei/agent-handoff-kit
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 ```
 
 ## Reddit
@@ -43,7 +43,7 @@ The goal is to stop wasting context window on "here is how this repo works" ever
 
 No API key, no upload, no telemetry:
 
-npx github:luoowei/agent-handoff-kit
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 ```
 
 Suggested communities:
@@ -69,7 +69,7 @@ It generates:
 
 Local-only. No API key. No telemetry.
 
-npx github:luoowei/agent-handoff-kit
+npx --yes git+https://github.com/luoowei/agent-handoff-kit.git
 ```
 
 ## Launch Checklist
