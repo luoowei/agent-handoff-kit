@@ -1,5 +1,7 @@
 # agent-handoff-kit
 
+**Language:** English | [简体中文](README.zh-CN.md)
+
 Stop re-explaining your repo to every AI coding agent.
 
 `agent-handoff-kit` is a zero-config CLI that generates compact handoff files for Codex, Claude Code, Cursor, and other AI coding agents. It scans your repository locally and writes the context a new agent needs before touching code.

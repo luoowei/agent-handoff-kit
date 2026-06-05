@@ -31,11 +31,11 @@ Important files:
 - llms.txt
 - package.json
 - README.md
+- README.zh-CN.md
 - src/cli.js
 - src/file-writer.js
 - src/generator.js
 - src/scanner.js
 - test/cli.test.js
 - test/file-writer.test.js
-- test/generator.test.js
 ```
